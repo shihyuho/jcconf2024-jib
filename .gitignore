@@ -35,4 +35,5 @@ build/
 *.drawio.bkp
 docs/assets/
 *.key
+*.pptx
 
