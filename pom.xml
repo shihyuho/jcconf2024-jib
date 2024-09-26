@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.3.4</version>
+    <relativePath/> <!-- lookup parent from repository -->
+  </parent>
+  <groupId>com.github.shihyuho.jcconf2024</groupId>
+  <artifactId>demo</artifactId>
+  <version>1.0.0</version>
+  <name>jib</name>
+  <description>JCConf 2024 - Jib</description>
+  <url/>
+  <licenses>
+    <license/>
+  </licenses>
+  <developers>
+    <developer/>
+  </developers>
+  <scm>
+    <connection/>
+    <developerConnection/>
+    <tag/>
+    <url/>
+  </scm>
+  <properties>
+    <java.version>21</java.version>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <excludes>
+            <exclude>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+            </exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>com.google.cloud.tools</groupId>
+        <artifactId>jib-maven-plugin</artifactId>
+        <version>3.4.2</version>
+        <configuration>
+          <from>
+            <image>eclipse-temurin:21-jre-alpine</image>
+          </from>
+          <to>
+            <tags>
+              <tag>${project.version}</tag>
+            </tags>
+          </to>
+          <container>
+            <jvmFlags>
+              <jvmFlag>-XshowSettings:vm</jvmFlag>
+            </jvmFlags>
+            <entrypoint>sh,/entrypoint.sh</entrypoint>
+            <labels>
+              <jcconf>2024</jcconf>
+            </labels>
+            <ports>
+              <port>8080</port>
+            </ports>
+            <format>OCI</format>
+            <creationTime>USE_CURRENT_TIMESTAMP</creationTime>
+          </container>
+          <extraDirectories>
+            <paths>
+              <path>
+                <from>.</from>
+                <includes>entrypoint.sh</includes>
+              </path>
+            </paths>
+          </extraDirectories>
+          <pluginExtensions>
+            <pluginExtension>
+              <implementation>tw.com.softleader.cloud.tools.jib.maven.JvmFlagsExtension</implementation>
+            </pluginExtension>
+          </pluginExtensions>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>tw.com.softleader.cloud.tools</groupId>
+            <artifactId>jib-jvm-flags-extension-maven</artifactId>
+            <version>1.0.5</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
