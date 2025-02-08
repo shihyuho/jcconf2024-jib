@@ -2,6 +2,7 @@
 [![](https://img.shields.io/badge/talks-speakerdeck-brightgreen?style=for-the-badge)](https://speakerdeck.com/shihyuho)
 [![](https://img.shields.io/badge/talks-slideshare-blue?style=for-the-badge)](https://www.slideshare.net/MattHo2)
 [![](https://img.shields.io/badge/pdf-.%2Fdocs-yellow?style=for-the-badge)](./docs)
+[![](https://img.shields.io/badge/video-YouTube-red?style=for-the-badge)](https://youtu.be/PksUhTXwkdU?si=AjdWaTcpn3oeONbJ)
 
 # Jib 打包 Java 應用的那些事：心得分享與擴充攻略
 
